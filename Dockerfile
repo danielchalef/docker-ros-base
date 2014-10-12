@@ -52,7 +52,7 @@ VOLUME /var/backups
 EXPOSE 11311
 
 #creatian of volume 
-VOLUME 
+#VOLUME 
 
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
