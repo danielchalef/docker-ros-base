@@ -9,17 +9,15 @@ docker run -d -p 11311 quantumobject/docker-ros-base
 
 To used the container you need to access it by
 
-docker-bash container_id 
+docker exec -it container_id /bin/bash
 
-docker-bash part of quantumobject/docker-tools   :
 
-https://github.com/QuantumObject/docker-tools
-
-This container was made to explore and learn the ROS (Robot Operating System). For additional info check : http://www.ros.org/
+This container was made to explore and learn the ROS (Robot Operating System). For additional info check :
+[http://www.ros.org/](http://www.ros.org/)
 
 For tutorial you can begin exploring at :
 
-http://wiki.ros.org/ROS/Tutorials/NavigatingTheFilesystem
+[http://wiki.ros.org/ROS/Tutorials/NavigatingTheFilesystem](http://wiki.ros.org/ROS/Tutorials/NavigatingTheFilesystem)
 
 prior procedure of this tutorial already done at the container (Installing and Configuring Your ROS Environment) . The user account and working directory use in this case it is root and root subdirectory. 
 
