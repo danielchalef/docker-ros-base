@@ -21,4 +21,4 @@ For tutorial you can begin exploring at :
 
 prior procedure of this tutorial already done at the container (Installing and Configuring Your ROS Environment) . The user account and working directory use in this case it is root and root subdirectory. 
 
-If you need to add device to it , please try to run container with -v /dev/xxxx:/dev/xxxxx to include device from server/computer you are running the container ( no sure if that will work ... but let me know ... and maybe you need to add  –privileged too)
+If you need to add device to it , please try to run container with -v /dev/xxxx:/dev/xxxxx to include device from server/computer you are running the container ( no sure if that will work ... but let me know ... and maybe you need to add  –privileged too) or  using –device /dev/xxxxx  after docker 1.2
