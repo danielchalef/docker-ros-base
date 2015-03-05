@@ -8,7 +8,7 @@ ENV HOME /root
 
 #add repository and update the container
 #Installation of nesesary package/software for this containers...
-RUN echo "deb http://packages.ros.org/ros/ubuntu utopic main" > /etc/apt/sources.list.d/ros-latest.list
+RUN echo "deb http://packages.ros.org/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list
 RUN wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sudo apt-key add -
 RUN apt-get update && apt-get install -y -q  build-essential \
                               ros-indigo-ros-base \
