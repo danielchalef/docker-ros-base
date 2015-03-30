@@ -33,7 +33,7 @@ For tutorial you can begin exploring at :
 
 Prior procedure of this tutorial already done at the container (Installing and Configuring Your ROS Environment). The user account and working directory use in this case it is root and root subdirectory. 
 
-If you need to add a device from the server that docker is running  , please try to run the container with the options  -device /dev/xxxxx.
+If you need to add a device from the server that docker is running  , please try to run the container with the options -device /dev/xxxxx.
 
 ## More Info
 
