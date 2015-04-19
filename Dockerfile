@@ -47,7 +47,8 @@ VOLUME /var/backups
 #include conf file related to service/daemon 
 #additional tools to be used internally 
 
-# some ports need to be allowed access from outside of the server. 
+# To allow access from outside of the container  to the container service at these ports 
+# Need to allow ports access rule at firewall too . 
 EXPOSE 11311
 
 #creatian of volume 
