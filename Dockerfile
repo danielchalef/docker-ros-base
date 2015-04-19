@@ -1,12 +1,12 @@
-#name of container: docker-ros-base
-#version of container: 0.5.1
+#Name of container: docker-ros-base
+#Version of container: 0.5.1
 FROM quantumobject/docker-baseimage
 MAINTAINER Angel Rodriguez  "angel@quantumobject.com"
 
 # Set correct environment variables.
 ENV HOME /root
 
-#add repository and update the container
+#Add repository and update the container
 #Installation of necessary package/software for these containers...
 RUN echo "deb http://packages.ros.org/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list
 RUN wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sudo apt-key add -
@@ -28,16 +28,16 @@ RUN chmod +x /etc/my_init.d/startup.sh
 
 ##Adding Deamons to containers
 
-#pre-config script for another service that needs to be run when container image is created 
-#optionally include here additional software that needs some service to be installed, like for example mysqld
+#pre-config script that needs to be run when container image is created 
+#optionally include here additional software that needs to be installed or configured for some service running on the container.
 COPY pre-conf.sh /sbin/pre-conf
 RUN chmod +x /sbin/pre-conf \
     && /bin/bash -c /sbin/pre-conf \
     && rm /sbin/pre-conf
 
 
-## script that can be running from the outside using docker-bash tool ...
-## for example to create backups for database with convitation of VOLUME dockers-bash container_ID backup_mysql
+##Script that can be running from the outside using 'docker exec -it container_id commands' tool
+## for example to create backups for database.
 COPY backup.sh /sbin/backup
 RUN chmod +x /sbin/backup
 VOLUME /var/backups
