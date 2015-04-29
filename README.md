@@ -1,6 +1,6 @@
 # docker-ros-desktop-full
 
-Forked from the good work of QuantumObject and their docker-ros-base
+Forked from the good work of QuantumObject and 
    [quantumobject/docker-ros-base][5]
 
 Docker container for [ros-desktop-full][3]
