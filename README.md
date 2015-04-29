@@ -1,7 +1,7 @@
 # docker-ros-desktop-full
 
 Forked from the good work of QuantumObject and their docker-ros-base
-   [https://github.com/QuantumObject/docker-ros-base][5]
+   [quantumobject/docker-ros-base][5]
 
 Docker container for [ros-desktop-full][3]
 
@@ -11,7 +11,6 @@ Docker container for [ros-desktop-full][3]
 
 About ROS [www.ros.org][1]
 
-To help improve this container [quantumobject/docker-ros-base][5]
 
 [1]:http://www.ros.org
 [2]:https://www.docker.com
