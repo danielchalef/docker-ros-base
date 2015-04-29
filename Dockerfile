@@ -1,17 +1,19 @@
-#Name of container: docker-ros-base
-#Version of container: 0.5.1
-FROM quantumobject/docker-baseimage
-MAINTAINER Angel Rodriguez  "angel@quantumobject.com"
+#Name of container: docker-ros-desktop-full
+#Version of container: 0.1
+# Forked from https://github.com/QuantumObject/docker-ros-base
+FROM ubuntu:14.04
+MAINTAINER Daniel Chalef  "daniel.chalef@gmail.com"
 
 # Set correct environment variables.
 ENV HOME /root
 
 #Add repository and update the container
 #Installation of necessary package/software for these containers...
+RUN apt-get -y update && apt-get -y install wget
 RUN echo "deb http://packages.ros.org/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list
 RUN wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sudo apt-key add -
 RUN apt-get update && apt-get install -y -q  build-essential \
-                              ros-indigo-ros-base \
+                              ros-indigo-desktop-full \
                     && apt-get clean \
                     && rm -rf /tmp/* /var/tmp/*  \
                     && rm -rf /var/lib/apt/lists/*
