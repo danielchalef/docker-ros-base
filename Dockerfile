@@ -6,10 +6,13 @@ MAINTAINER Daniel Chalef  "daniel.chalef@gmail.com"
 
 # Set correct environment variables.
 ENV HOME /root
+ENV DEBIAN_FRONTEND noninteractive
 
-#Add repository and update the container
+RUN apt-get -y update && apt-get -y upgrade
+
+#Add ROS repository and update the container
 #Installation of necessary package/software for these containers...
-RUN apt-get -y update && apt-get -y install wget
+RUN apt-get -y update && apt-get -y install wget git vim bash-completion
 RUN echo "deb http://packages.ros.org/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list
 RUN wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sudo apt-key add -
 RUN apt-get update && apt-get install -y -q  build-essential \
@@ -18,7 +21,13 @@ RUN apt-get update && apt-get install -y -q  build-essential \
                     && rm -rf /tmp/* /var/tmp/*  \
                     && rm -rf /var/lib/apt/lists/*
 
-#General variable definitions....
+# Install graphics driver&co for accelerated 3d support (optional, but required if you intend using rviz) 
+ADD NVIDIA_DRIVER.run /tmp/NVIDIA_DRIVER.run
+RUN sh /tmp/NVIDIA_DRIVER.run -a --ui=none --no-kernel-module
+RUN rm /tmp/NVIDIA_DRIVER.run
+    
+# some QT-Apps/Gazebo don't not show controls without this
+ENV QT_X11_NO_MITSHM 1
 
 ##startup scripts  
 #Pre-config script that needs to be run only when the container runs for the first time 
@@ -27,9 +36,7 @@ RUN mkdir -p /etc/my_init.d
 COPY startup.sh /etc/my_init.d/startup.sh
 RUN chmod +x /etc/my_init.d/startup.sh
 
-
 ##Adding Deamons to containers
-
 #pre-config script that needs to be run when container image is created 
 #optionally include here additional software that needs to be installed or configured for some service running on the container.
 COPY pre-conf.sh /sbin/pre-conf
